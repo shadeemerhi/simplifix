@@ -63,6 +63,7 @@ const useStyles = makeStyles((theme) => ({
   searchButton: {
     justifySelf: "flex-end",
     backgroundColor: "#0EE290",
+    color: "white",
     "&:hover": {
       backgroundColor: green[600],
     },

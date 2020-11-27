@@ -78,6 +78,7 @@ const useStyles = makeStyles((theme) => ({
   },
   searchButton: {
     backgroundColor: "#0EE290",
+    color: "white",
     "&:hover": {
       backgroundColor: green[600],
     },

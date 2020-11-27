@@ -94,7 +94,6 @@ let socket;
 export default function Chat({ location }) {
   const classes = useStyles();
 
-
   const { cookie } = useContext(UserCookie);
   const [room, setRoom] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -150,7 +149,7 @@ export default function Chat({ location }) {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <h1 className={classes.headerTitle}>Messenging</h1>
+          <h1 className={classes.headerTitle}>Messaging</h1>
         </div>
       </div>
 

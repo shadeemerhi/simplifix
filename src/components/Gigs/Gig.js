@@ -19,6 +19,19 @@ const useStyles = makeStyles({
     textDecoration: "none",
     color: "black",
   },
+  button: {
+    backgroundColor: "#0EE290",
+    color: "white",
+    padding: "5px 20px",
+    "&:hover": {
+      backgroundColor: "#0EB201",
+    },
+  },
+  footer: {
+    margin: "0 1em",
+    display: "flex",
+    justifyContent: "space-between",
+  },
 });
 
 export default function GigCard(props) {
@@ -45,14 +58,16 @@ export default function GigCard(props) {
           </CardContent>
         </CardActionArea>
       </Link>
-      <CardActions>
+      <CardActions className={classes.footer}>
         <Rating name="size-medium" defaultValue={props.rating} />
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
+        <Link
+          className={classes.link}
+          to={`/gigs/${props.category}/${props.id}`}
+        >
+          <Button size="small" color="primary" className={classes.button}>
+            Learn More
+          </Button>
+        </Link>
       </CardActions>
     </Card>
   );

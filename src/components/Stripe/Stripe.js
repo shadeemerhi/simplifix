@@ -81,6 +81,7 @@ export default function Stripe(props) {
       // using `result.error.message`.
     }
   };
+
   return message ? (
     <Message message={message} />
   ) : (
