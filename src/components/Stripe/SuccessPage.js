@@ -52,7 +52,7 @@ export default function SuccessPage() {
           defaultValue={0}
           size="large"
           onClick={() => {
-            history.push(`/`);
+            history.push(`/myorder`);
           }}
         />
       </div>
