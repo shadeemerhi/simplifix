@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((props) => ({
   root: {
@@ -36,11 +37,15 @@ export default function Conversation(props) {
   return(
     props.userID === props.client_id ? (
       <Link to={`/chat/?conv_id=${props.id}`} className={classes.root}>
-        <div className={classes.root}>
-          <div className={classes.link}>
-            <p>{props.contractor_first} {props.contractor_last}</p>
-          </div>
-        </div>
+        {props.id ? 
+          <div className={classes.root}>
+            <div className={classes.link}>
+              <p>{props.contractor_first} {props.contractor_last}</p>
+            </div>
+          </div> 
+        : 
+          <CircularProgress color={`black`}/>
+        }
       </Link>
     ) : (
     <Link to={`/chat/?conv_id=${props.id}`} className={classes.root}>

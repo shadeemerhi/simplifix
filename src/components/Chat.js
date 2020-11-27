@@ -150,7 +150,7 @@ export default function Chat({ location }) {
             backgroundRepeat: "no-repeat",
           }}
         >
-          <h1 className={classes.headerTitle}>Messenging</h1>
+          <h1 className={classes.headerTitle}>Messages</h1>
         </div>
       </div>
 
