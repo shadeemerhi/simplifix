@@ -23,7 +23,7 @@ import { green } from "@material-ui/core/colors";
 import { Link } from "react-router-dom";
 import { UserCookie } from "../hooks/UserCookie";
 import axios from "axios";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -78,7 +78,6 @@ const useStyles = makeStyles((theme) => ({
     justifyContent: "center",
   },
   searchButton: {
-    // color: "white",
     backgroundColor: "#0EE290",
     "&:hover": {
       backgroundColor: green[600],
@@ -89,7 +88,6 @@ const useStyles = makeStyles((theme) => ({
   },
   inputInput: {
     padding: theme.spacing(1, 1, 1, 0),
-    // vertical padding + font size from searchIcon
     paddingLeft: `calc(1em + ${theme.spacing(4)}px)`,
     transition: theme.transitions.create("width"),
     width: "100%",
@@ -119,9 +117,6 @@ const useStyles = makeStyles((theme) => ({
   link: {
     textDecoration: "none",
     color: "black",
-    // '&:visited':{
-    //   color: 'green'
-    // }
   },
 }));
 
@@ -158,10 +153,6 @@ export default function Navbar(props) {
 
   const handleMobileMenuOpen = (event) => {
     setMobileMoreAnchorEl(event.currentTarget);
-  };
-
-  const resetField = () => {
-    document.getElementById("search-field").reset();
   };
 
   const menuId = "primary-search-account-menu";

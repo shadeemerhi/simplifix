@@ -1,12 +1,7 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { useApplicationData } from "../hooks/useApplicationData";
-import GridList from "@material-ui/core/GridList";
-import GridListTile from "@material-ui/core/GridListTile";
-import GridListTileBar from "@material-ui/core/GridListTileBar";
-import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
-import CategoryCard from "./CategoryCard";
 import PopularHeading from "./PopularHeading";
 import Carousel from "./Carousel";
 
@@ -27,7 +22,6 @@ const useStyles = makeStyles((theme) => ({
   },
   gridList: {
     flexWrap: "nowrap",
-    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
     transform: "translateZ(0)",
     "&:hover": {
       cursor: "pointer",
@@ -45,9 +39,9 @@ const useStyles = makeStyles((theme) => ({
     borderBottom: "8px solid #66bb6a",
   },
 
-  title: {
-    margin: "2rem 0rem 2rem 0rem",
-  },
+  // title: {
+  //   margin: "2rem 0rem 2rem 0rem",
+  // },
 }));
 
 export default function Categories() {

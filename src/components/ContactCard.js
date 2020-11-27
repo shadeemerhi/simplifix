@@ -1,12 +1,11 @@
 import React, { useState, useContext } from "react";
-import { Link, Redirect } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 import { UserCookie } from "../hooks/UserCookie";
 import { makeStyles } from "@material-ui/core/styles";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import CallIcon from "@material-ui/icons/Call";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import Button from "@material-ui/core/Button";
-import { green } from "@material-ui/core/colors";
 import { check } from "../helpers/dataHelpers";
 import axios from "axios";
 
@@ -57,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ContactCard(props) {
   const classes = useStyles();
-  const { cookie, setCookie } = useContext(UserCookie);
+  const { cookie } = useContext(UserCookie);
   const [conversationID, setConversationID] = useState(null);
   const [redirect, setRedirect] = useState(false);
 

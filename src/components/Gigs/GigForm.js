@@ -1,10 +1,8 @@
 import React, { useState, useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import TextField from "@material-ui/core/TextField";
-import { green } from "@material-ui/core/colors";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
-import { Link } from "react-router-dom";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
@@ -75,7 +73,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function GigForm(props) {
   const classes = useStyles();
-  const { cookie, setCookie, state, setState } = useContext(UserCookie);
+  const { cookie, state, setState } = useContext(UserCookie);
   const [categories, setCategories] = useState([]);
   const [categoriesNames, setCategoriesNames] = useState([]);
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -112,8 +110,6 @@ export default function GigForm(props) {
   if (postSuccessful) {
     return <Redirect to={`/gigs/${gig.categoryName}/${gigId}`} />;
   }
-
-  // props.setShow(false);
 
   const handleClickListItem = (event) => {
     getCategories();
