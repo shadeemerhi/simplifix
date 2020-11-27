@@ -2,8 +2,7 @@ import React, { useState } from "react";
 import { Paper, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 import GigDelete from "./gigDelete";
-import { Redirect, useHistory } from "react-router-dom";
-import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -53,20 +52,14 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GigItemList(props) {
-  const [redirect, setRedirect] = useState(false);
-  const [category, setCategory] = useState(0);
 
   let history = useHistory();
 
   const {
     id,
-    contractor_id,
-    category_id,
     title,
     description,
     photo_one,
-    phone_two,
-    photo_three,
   } = props.gig;
 
   const classes = useStyles();

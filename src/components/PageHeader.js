@@ -3,7 +3,7 @@ import { fade, makeStyles } from "@material-ui/core/styles";
 import InputBase from "@material-ui/core/InputBase";
 import Button from "@material-ui/core/Button";
 import SearchIcon from "@material-ui/icons/Search";
-import { Redirect, useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { green } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({

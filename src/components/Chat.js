@@ -8,7 +8,6 @@ import Input from "./Input";
 import Conversations from "./Conversations";
 import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
-import SendIcon from "@material-ui/icons/Send";
 import ChatIcon from "@material-ui/icons/Chat";
 import Button from "@material-ui/core/Button";
 
@@ -33,9 +32,7 @@ const useStyles = makeStyles((theme) => ({
     padding: "2rem",
     width: "70%",
     display: "flex",
-    // position: 'absolute',
     height: "600px",
-    // top: '220px'
   },
 
   conv: {
@@ -64,7 +61,6 @@ const useStyles = makeStyles((theme) => ({
     position: "relative",
     background: "white",
     width: "60%",
-    // height: '400px',
     padding: "1rem",
     boxShadow: "0px 2px 5px 0.5px #E3E3E3",
     borderRadius: "8px",
@@ -98,15 +94,10 @@ let socket;
 export default function Chat({ location }) {
   const classes = useStyles();
 
-  // console.log('is the chat being rendered')
 
-  const { cookie, setCookie } = useContext(UserCookie);
-  const [conversationID, setConversationID] = useState(null);
+  const { cookie } = useContext(UserCookie);
   const [room, setRoom] = useState(null);
-  const [userID, setUserID] = useState(null);
-  // const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  // const ENDPOINT = "localhost:8080";
   const ENDPOINT = process.env.REACT_APP_WEBSOCKET_URL;
 
   const { conv_id } = queryString.parse(location.search);

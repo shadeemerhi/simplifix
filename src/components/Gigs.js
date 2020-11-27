@@ -1,6 +1,5 @@
-import React, { useState } from "react";
-import Categories from "./Categories";
-import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import React from "react";
+import { Route, Switch } from "react-router-dom";
 import GigForm from "./Gigs/GigForm";
 import GigsHome from "./GigsHome";
 import CategoryPage from "./CategoryPage";

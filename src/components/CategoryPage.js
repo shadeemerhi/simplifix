@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import {
-  BrowserRouter as Router,
   Route,
   useParams,
-  Link,
   Switch,
 } from "react-router-dom";
 import GigPage from "./GigPage";
@@ -14,7 +12,6 @@ export default function CategoryPage() {
   const params = useParams();
   const category = params.category;
   const [gigs, setGigs] = useState([]);
-  const [gig, setGig] = useState({});
 
   // The first axios request gets the id of the current category page we are on
   // The second axios request gets the gigs in that category using the id from the first axios request

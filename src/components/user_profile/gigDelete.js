@@ -19,7 +19,7 @@ const useStyles = makeStyles(() => ({
 export default function AlertDialog(props) {
 
   const {state, setState} = useContext(UserCookie);
-  const {error, warning, info, success} = useStyles();
+  const {error, success} = useStyles();
   const [open, setOpen] = React.useState(false);
 
   const handleClickOpen = () => {

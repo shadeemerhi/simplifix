@@ -10,17 +10,8 @@ import useMediaQuery from '@material-ui/core/useMediaQuery';
 import Card from '@material-ui/core/Card';
 
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: '90%',
-    margin: "2em auto"
-  },
-  left: {
-    
-  }
-}));
-
 export default function Gig(props) {
+
 
   const {user, gigs} = props;
 
