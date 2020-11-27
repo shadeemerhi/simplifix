@@ -42,7 +42,6 @@ export default function GigPage() {
   const getCoords = (address) => {
     const splitAddy = address.split(" ");
     let searchString = splitAddy.join("+");
-    console.log("api key in gigpage", process.env.REACT_APP_GOOGLE_API);
     axios
       .get(
         `https://maps.googleapis.com/maps/api/geocode/json?address=${searchString}&key=${process.env.REACT_APP_GOOGLE_API}`
