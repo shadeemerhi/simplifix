@@ -41,7 +41,7 @@ export default function Input(props) {
 
   const classes = useStyles();
   // const { message, setMessage, sendMessage } = props;
-  const { sendMessage, setTyping } = props;
+  const { sendMessage } = props;
   const [message, setMessage] = useState('');
 
   return (

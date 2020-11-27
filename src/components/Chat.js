@@ -10,7 +10,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import ChatIcon from "@material-ui/icons/Chat";
 import Button from "@material-ui/core/Button";
-import useAtStart from "react-scroll-to-bottom/lib/hooks/useAtStart";
 
 const useStyles = makeStyles((theme) => ({
   root: {
