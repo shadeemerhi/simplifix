@@ -8,7 +8,6 @@ import InputBase from "@material-ui/core/InputBase";
 import Badge from "@material-ui/core/Badge";
 import MenuItem from "@material-ui/core/MenuItem";
 import Menu from "@material-ui/core/Menu";
-import MenuIcon from "@material-ui/icons/Menu";
 import ExitToAppIcon from "@material-ui/icons/ExitToApp";
 import PersonAddIcon from "@material-ui/icons/PersonAdd";
 import LockOpenIcon from "@material-ui/icons/LockOpen";

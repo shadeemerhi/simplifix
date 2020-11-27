@@ -1,34 +1,51 @@
 import React, { useState, useEffect } from "react";
 import { loadStripe } from "@stripe/stripe-js";
 import Fab from "@material-ui/core/Fab";
-import CloudDoneIcon from "@material-ui/icons/CloudDone";
+import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
+import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { yellow } from "@material-ui/core/colors";
+
+const theme = createMuiTheme({
+  palette: {
+    primary: {
+      main: yellow["A700"],
+    },
+  },
+});
 
 // Make sure to call `loadStripe` outside of a component’s render to avoid
 // recreating the `Stripe` object on every render.
 const stripePromise = loadStripe(
   "pk_test_51Hm2BTIXKvKnuzRhcHoz5p3sr4VK0ieZwrbWQzaf7bQ4vO9cXfwuvbu4s2aN7G1xhnBpUHopkvwRbvLnacYuTuyO00boufvjcz"
 );
-const ProductDisplay = ({ handleClick }) => (
-  <section>
-    <Fab
-      variant="extended"
-      icon={<CloudDoneIcon />}
-      color="primary"
-      id="checkout-button"
-      role="link"
-      onClick={handleClick}
-    >
-      Pay
-    </Fab>
-  </section>
-);
+
 const Message = ({ message }) => (
   <section>
     <p>{message}</p>
   </section>
 );
-export default function Stripe() {
+export default function Stripe(props) {
+  const order = props.order;
   const [message, setMessage] = useState("");
+
+  const ProductDisplay = ({ handleClick }) => (
+    <section>
+      <ThemeProvider theme={theme}>
+        <Fab
+          variant="extended"
+          color="primary"
+          id="checkout-button"
+          disabled={order.status !== "completed"}
+          role="link"
+          onClick={handleClick}
+        >
+          <MonetizationOnIcon style={{ marginRight: "0.3em" }} />
+          Payment
+        </Fab>
+      </ThemeProvider>
+    </section>
+  );
+
   useEffect(() => {
     // Check to see if this is a redirect back from Checkout
     const query = new URLSearchParams(window.location.search);
@@ -41,6 +58,7 @@ export default function Stripe() {
       );
     }
   }, []);
+
   const handleClick = async (event) => {
     const stripe = await stripePromise;
     const response = await fetch("/create-session", {
@@ -49,13 +67,14 @@ export default function Stripe() {
         "Content-type": "application/json; charset=UTF-8",
       }),
       // PASS ORDER DATA HERE
-      body: JSON.stringify({ transaction: { order_id: 1, price: 420 } }),
+      body: JSON.stringify({ order }),
     });
     const session = await response.json();
     // When the customer clicks on the button, redirect them to Checkout.
     const result = await stripe.redirectToCheckout({
       sessionId: session.id,
     });
+
     if (result.error) {
       // If `redirectToCheckout` fails due to a browser or network
       // error, display the localized error message to your customer
