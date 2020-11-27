@@ -25,6 +25,7 @@ import SearchResults from "./components/SearchResults";
 import IndexBottom from "./components/IndexBottom";
 import SuccessPage from "./components/Stripe/SuccessPage";
 import FailedPage from "./components/Stripe/FailedPage";
+import ScrollToTop from "./components/ScrollToTop";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -48,6 +49,7 @@ export default function App() {
       <div className={classes.root}>
         <UserCookie.Provider value={{ cookie, setCookie, state, setState }}>
           <Router>
+            <ScrollToTop />
             <Navbar ordersByUser={ordersByUserAsContractor} />
             <Switch>
               <div style={style}>
