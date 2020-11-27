@@ -55,20 +55,14 @@ export default function Input(props) {
         
       }}
       onChange={(event) => setMessage(event.target.value)}
-      // onKeyPress={(event) => event.key === 'Enter' ? sendMessage(message, event) : null}
       onKeyPress={event => {
         if (event.key === 'Enter') {
+          props.userTyping(event.key);
           sendMessage(message, event)
           setMessage('');
         }
          else {
            props.userTyping(event.key);
-          // console.log('setting')
-          // setTyping(true);
-          // // clearTimeout(timeout);
-          // const timeout = setTimeout(() => {
-          //   setTyping(false)
-          // }, 2000)
         }
       }}
     />
