@@ -21,5 +21,9 @@ context("Basic", () => {
       .type("Plumber");
 
     cy.get("button").first().click();
+
+    cy.get("[alt='Plumber named Mario']").click();
+
+    cy.get(".MuiButton-label").contains("Book").click();
   });
 });
