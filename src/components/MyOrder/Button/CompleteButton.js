@@ -14,7 +14,7 @@ const theme = createMuiTheme({
 export default function CompleteButton(props) {
   return (
     <ThemeProvider theme={theme}>
-      <Fab variant="extended" color="primary" disabled={props.status !== "completed"}>
+      <Fab variant="extended" color="primary" onClick={props.onclick}>
         <CloudDoneIcon style={{ marginRight: "0.3em" }} />
         Complete
       </Fab>

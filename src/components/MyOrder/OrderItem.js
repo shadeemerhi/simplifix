@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -37,7 +37,13 @@ export default function OrderItem(props) {
   const { order, otherOrders } = props;
   const orderDate = order.order_date;
   const disabledDate = otherOrders.map(order => new Date(order.order_date));
-  
+  const [status, setStatus] = useState("pending");
+  const onConfirm = () => {
+    setStatus("active")
+  }
+  const onComplete = () => {
+    setStatus("")
+  }
 
   return (
     <div className={classes.root}>
@@ -62,8 +68,13 @@ export default function OrderItem(props) {
           </Grid>
           <Grid item xs={2} container direction="column" justify="center">
             <Status order={order}/>
-            {props.role !== "Client" && <ClientButton />}
-            {props.role !== "Contractor" && <ContractorButton />}
+            {props.role !== "Client" && <ClientButton order={order} status={status}/>}
+            {props.role !== "Contractor" && <ContractorButton 
+            order={order} 
+            status={status}
+            onConfirm={onConfirm}
+            onComplete={onComplete}
+            />}
           </Grid>
         </Grid>
       </Paper>
