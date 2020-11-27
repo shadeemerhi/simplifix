@@ -18,8 +18,10 @@ export default function Booking(props) {
       review: null,
       status: "pending",
       order_date: selectedDate,
-      finished_date: null
+      finished_date: null,
+      final_price: null
     }
+   
     props.transition("PENDING");
     axios.put('/api/orders', order)
     .then(res => {

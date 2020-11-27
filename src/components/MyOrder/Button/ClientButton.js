@@ -14,7 +14,7 @@ const theme = createMuiTheme({
 export default function ClientButton(props) {
   return (
     <ThemeProvider theme={theme}>
-      <Fab variant="extended" color="primary" disabled={props.order.status === 'pending'}>
+      <Fab variant="extended" color="primary" disabled={props.order.status !== 'completed'}>
         <MonetizationOnIcon style={{ marginRight: "0.3em" }} />
         Payment
       </Fab>
