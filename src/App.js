@@ -23,6 +23,8 @@ import {
 } from "./helpers/dataHelpers";
 import SearchResults from "./components/SearchResults";
 import IndexBottom from "./components/IndexBottom";
+import SuccessPage from "./components/Stripe/SuccessPage";
+import FailedPage from "./components/Stripe/FailedPage";
 
 import { makeStyles } from "@material-ui/core/styles";
 
@@ -82,6 +84,12 @@ export default function App() {
                 </Route>
                 <Route path="/search/:search">
                   <SearchResults />
+                </Route>
+                <Route path="/checkout/success">
+                  <SuccessPage />
+                </Route>
+                <Route path="/checkout/failed">
+                  <FailedPage />
                 </Route>
               </div>
             </Switch>

@@ -270,14 +270,14 @@ export default function Navbar(props) {
     <div className={classes.grow}>
       <AppBar position="static" className={classes.root}>
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             edge="start"
             className={classes.menuButton}
             color="inherit"
             aria-label="open drawer"
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Link to="/" className={classes.title}>
             <Typography className={classes.title} variant="h4" noWrap>
               <b>SimpliFix</b>

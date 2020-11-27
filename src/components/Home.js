@@ -3,7 +3,7 @@ import Categories from "./Categories";
 import { makeStyles } from "@material-ui/core/styles";
 import PageHeader from "./PageHeader";
 import TopGigs from "./TopGigs";
-// import Stripe from "./Stripe";
+import Stripe from "./Stripe/Stripe";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,7 +20,7 @@ export default function Home() {
       <PageHeader />
       <Categories />
       <TopGigs />
-      {/* <Stripe /> */}
+      <Stripe />
     </div>
   );
 }
