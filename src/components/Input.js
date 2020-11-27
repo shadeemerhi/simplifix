@@ -41,7 +41,7 @@ export default function Input(props) {
 
   const classes = useStyles();
   // const { message, setMessage, sendMessage } = props;
-  const { sendMessage } = props;
+  const { sendMessage, setTyping } = props;
   const [message, setMessage] = useState('');
 
   return (
@@ -60,6 +60,15 @@ export default function Input(props) {
         if (event.key === 'Enter') {
           sendMessage(message, event)
           setMessage('');
+        }
+         else {
+           props.userTyping(event.key);
+          // console.log('setting')
+          // setTyping(true);
+          // // clearTimeout(timeout);
+          // const timeout = setTimeout(() => {
+          //   setTyping(false)
+          // }, 2000)
         }
       }}
     />
