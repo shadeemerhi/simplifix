@@ -25,5 +25,15 @@ context("Basic", () => {
     cy.get("[alt='Plumber named Mario']").click();
 
     cy.get(".MuiButton-label").contains("Book").click();
+
+    cy.get("[data-testid=date-picker]").click().type("12/25/2020");
+
+    // cy.get(".MuiButton-label").contains("Confirm").click();
+  });
+
+  it("Signs up for account", () => {
+    cy.get("button").contains("Join").click();
+
+    // cy.contains("First Name").click();
   });
 });
