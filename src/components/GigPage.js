@@ -47,7 +47,6 @@ export default function GigPage() {
         `https://maps.googleapis.com/maps/api/geocode/json?address=${searchString}&key=${process.env.REACT_APP_GOOGLE_API}`
       )
       .then((res) => {
-        console.log("results", res.data.results);
         return setCoords(res.data.results[0].geometry.location);
       });
   };
