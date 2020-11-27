@@ -40,7 +40,7 @@ export default function Stripe(props) {
           onClick={handleClick}
         >
           <MonetizationOnIcon style={{ marginRight: "0.3em" }} />
-          Payment
+          Pay ${order.final_price}
         </Fab>
       </ThemeProvider>
     </section>
