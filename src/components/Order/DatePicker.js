@@ -20,6 +20,7 @@ export default function DatePickers(props) {
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <Grid container justify="space-evenly">
         <KeyboardDatePicker
+          data-testid="date-picker"
           disablePast={true}
           margin="normal"
           id="date-picker-dialog"

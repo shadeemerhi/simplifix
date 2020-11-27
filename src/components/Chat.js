@@ -138,22 +138,25 @@ export default function Chat({ location }) {
   let timeout;
   const userTyping = (key) => {
     if (key === 'Enter') {
+      clearTimeout(timeout);
       setTyping(false);
+      socket.emit('typing', { typing: false })
+    } else {
+      socket.emit('typing', { typing: true })
     }
-    socket.emit('typing', { typing })
   }
 
   useEffect(() => {
     socket.on('display', (data) => {
-      console.log('data from the socket', data.id)
-      setTyping(true);
+      setTyping(data.data.typing);
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         setTyping(false)
       }, 2000)
     });
     return clearTimeout(timeout);
-  }, [])
+  }, [room])
+
 
   return cookie.user ? (
     <div className={classes.root}>

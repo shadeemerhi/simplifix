@@ -26,6 +26,7 @@ const Message = ({ message }) => (
 );
 export default function Stripe(props) {
   const order = props.order;
+  console.log("order :", order);
   const [message, setMessage] = useState("");
 
   const ProductDisplay = ({ handleClick }) => (
@@ -40,7 +41,7 @@ export default function Stripe(props) {
           onClick={handleClick}
         >
           <MonetizationOnIcon style={{ marginRight: "0.3em" }} />
-           {order.final_price ? `Pay $${order.final_price}` : `Payment`}
+          {order.final_price ? `Pay $${order.final_price}` : `Payment`}
         </Fab>
       </ThemeProvider>
     </section>
@@ -73,6 +74,16 @@ export default function Stripe(props) {
     // When the customer clicks on the button, redirect them to Checkout.
     const result = await stripe.redirectToCheckout({
       sessionId: session.id,
+    });
+
+    console.log("order front:", { ...order, status: "paid" });
+    await fetch(`/api/orders/${order.id}`, {
+      method: "PATCH",
+      headers: new Headers({
+        "Content-type": "application/json; charset=UTF-8",
+      }),
+      // PASS ORDER DATA HERE
+      body: JSON.stringify({ ...order, status: "paid" }),
     });
 
     if (result.error) {
