@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useState} from "react";
 import CompleteButton from "./CompleteButton";
 import ConfirmButton from "./ConfirmButton";
 
-export default function ContractorButton() {
+export default function ContractorButton(props) {
+  const [status, setStatus] = useState("pending");
+  const changingStatus = () => {
+    setStatus("completed")
+  }
  return <>
- <ConfirmButton/>
- <CompleteButton/>
+ {status === "pending" ? <ConfirmButton onclick={changingStatus}/> :
+ <CompleteButton status={status} />}
  </>
 }
