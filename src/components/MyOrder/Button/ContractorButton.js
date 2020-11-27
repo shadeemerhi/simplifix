@@ -3,9 +3,10 @@ import CompleteButton from "./CompleteButton";
 import ConfirmButton from "./ConfirmButton";
 
 export default function ContractorButton(props) {
-  const {onConfirm, onComplete, status} = props;
+  
+  const {order} = props;
  return <>
- {status === "pending" ? <ConfirmButton onclick={onConfirm}/> :
- <CompleteButton status={status} onclick={onComplete}/>}
+ {order.status === "pending" ? <ConfirmButton order={order} onclick={props.onConfirm}/> :
+ <CompleteButton order={order} onclick={props.onComplete}/>}
  </>
 }

@@ -1,4 +1,6 @@
-import React, {useState} from "react";
+import React, { useContext } from "react";
+import { UserCookie } from "../../hooks/UserCookie";
+import axios from "axios";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 import Paper from "@material-ui/core/Paper";
@@ -32,18 +34,40 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function OrderItem(props) {
-  
+  const { state, setState } = useContext(UserCookie);
   const classes = useStyles();
   const { order, otherOrders } = props;
   const orderDate = order.order_date;
-  const disabledDate = otherOrders.map(order => new Date(order.order_date));
-  const [status, setStatus] = useState("pending");
-  const onConfirm = () => {
-    setStatus("active")
-  }
-  const onComplete = () => {
-    setStatus("")
-  }
+  const disabledDate = otherOrders.map((order) => new Date(order.order_date));
+
+  const onConfirm = (order, option) => {
+    const id = order.id;
+    const updateOrder = { id, status: "confirmed", ...option };
+    const orders = [...state.orders].map((item) => {
+      return item.id === updateOrder.id ? {...item, ...updateOrder} : item;
+    });
+    console.log(orders);
+    axios
+      .patch(`/api/orders/${id}`, updateOrder)
+      .then((res) => {
+        setState({ ...state, orders })
+      })
+      .catch((err) => console.log(err));
+  };
+  const onComplete = (order, option) => {
+    const id = order.id;
+    const updateOrder = { id, status: "completed", ...option };
+    const orders = [...state.orders].map((item) => {
+      return item.id === updateOrder.id ? {...item, updateOrder} : item;
+    });
+    console.log(orders);
+    axios
+      .patch(`/api/orders/${id}`, updateOrder)
+      .then((res) => {
+        setState({ ...state, orders })
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <div className={classes.root}>
@@ -63,18 +87,19 @@ export default function OrderItem(props) {
           </Grid>
           <Grid item container direction="column" xs={7} alignItems="center">
             <CardHeader title={order.gig.title} />
-            <TimePicker orderDate={orderDate} disabledDate={disabledDate}/>
-            <UserCard user={props.user} role={props.role}/>
+            <TimePicker orderDate={orderDate} disabledDate={disabledDate} />
+            <UserCard user={props.user} role={props.role} />
           </Grid>
           <Grid item xs={2} container direction="column" justify="center">
-            <Status order={order}/>
-            {props.role !== "Client" && <ClientButton order={order} status={status}/>}
-            {props.role !== "Contractor" && <ContractorButton 
-            order={order} 
-            status={status}
-            onConfirm={onConfirm}
-            onComplete={onComplete}
-            />}
+            <Status order={order} />
+            {props.role !== "Client" && <ClientButton order={order} />}
+            {props.role !== "Contractor" && (
+              <ContractorButton
+                order={order}
+                onConfirm={() => onConfirm(order)}
+                onComplete={() => onComplete(order)}
+              />
+            )}
           </Grid>
         </Grid>
       </Paper>

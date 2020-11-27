@@ -10,7 +10,7 @@ export default function OrderReceived(props) {
         props.ordersReceived.map((order) => {
           const user = getUserById(order.client_id, props.users);
           const otherOrders = props.ordersReceived.filter(list => list.id !== order.id);
-          return <OrderItem user={user} order={order} otherOrders={otherOrders} role={role}/>;
+          return <OrderItem key={order.id} user={user} order={order} otherOrders={otherOrders} role={role}/>;
         })}
     </>
   );
