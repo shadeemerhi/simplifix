@@ -20,12 +20,18 @@ const useStyles = makeStyles((theme) => ({
     },
   },
 
+  typing: {
+    display: 'flex',
+    justifyContent: 'center',
+    fontSize: '12pt'
+  }
+
 }));
 
 
 export default function Feed(props) {
 
-  const { messages, userID } = props;
+  const { messages, userID, typing } = props;
   // messages = null;
 
   const classes = useStyles();
@@ -39,6 +45,10 @@ export default function Feed(props) {
           <Message {...message} userID={userID}/>
         )
       })}
+      {typing ? 
+        <div className={classes.typing}>
+          Typing...
+        </div> : null}
     </ScrollToBottom>
     ) : (<div className={classes.loading}>
       <CircularProgress size={`100px`} color={`black`}/>

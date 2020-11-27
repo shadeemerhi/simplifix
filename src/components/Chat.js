@@ -98,7 +98,9 @@ export default function Chat({ location }) {
   const { cookie } = useContext(UserCookie);
   const [room, setRoom] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [typing, setTyping] = useState(false);
   const ENDPOINT = process.env.REACT_APP_WEBSOCKET_URL;
+  console.log('rendering chat')
 
   const { conv_id } = queryString.parse(location.search);
 
@@ -134,6 +136,33 @@ export default function Chat({ location }) {
     }
   };
 
+  // if(typing) {
+  //   console.log('are we getting here');
+  //   socket.emit('typing', { typing })
+  // }
+
+
+  let timeout;
+  const userTyping = (key) => {
+    if (key === 'Enter') {
+      setTyping(false);
+    }
+    socket.emit('typing', { typing })
+    console.log('are we calling this');
+  }
+
+  useEffect(() => {
+    socket.on('display', (data) => {
+      setTyping(true);
+      clearTimeout(timeout);
+      timeout = setTimeout(() => {
+        setTyping(false)
+      }, 2000)
+      console.log('here after socket');
+    });
+    return clearTimeout(timeout);
+  }, [])
+
   return cookie.user ? (
     <div className={classes.root}>
       <div className={classes.header}>
@@ -160,8 +189,8 @@ export default function Chat({ location }) {
         </div>
         {conv_id ? (
           <div className={classes.chat}>
-            <Feed messages={messages} userID={cookie.user.id} />
-            <Input sendMessage={sendMessage} />
+            <Feed messages={messages} userID={cookie.user.id} typing={typing}/>
+            <Input sendMessage={sendMessage} userTyping={userTyping}/>
           </div>
         ) : (
           <div className={classes.emptyChat}>
