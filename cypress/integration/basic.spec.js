@@ -3,7 +3,27 @@ context("Basic", () => {
     cy.visit("http://localhost:3000/");
   });
 
-  it("renders the page", () => {
-    cy.get(".makeStyles-logo-60").should("have.text", "SimpliFix");
+  it("Navigates to gig", () => {
+    cy.get("[alt=Plumbing]").first().click();
+
+    cy.wait(100);
+
+    cy.get("[alt='Fridge repair']").click();
+
+    cy.get(".MuiButton-label").contains("Book").click();
+  });
+
+  it("Searches for Plumber", () => {
+    cy.get("input")
+      .should("have.attr", "placeholder", "Search…")
+      .first()
+      .click()
+      .type("Plumber");
+
+    cy.get("button").first().click();
+
+    cy.get("[alt='Plumber named Mario']").click();
+
+    cy.get(".MuiButton-label").contains("Book").click();
   });
 });
