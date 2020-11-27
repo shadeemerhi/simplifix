@@ -10,6 +10,7 @@ import { makeStyles } from "@material-ui/core/styles";
 import axios from "axios";
 import ChatIcon from "@material-ui/icons/Chat";
 import Button from "@material-ui/core/Button";
+import useAtStart from "react-scroll-to-bottom/lib/hooks/useAtStart";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -100,7 +101,6 @@ export default function Chat({ location }) {
   const [messages, setMessages] = useState([]);
   const [typing, setTyping] = useState(false);
   const ENDPOINT = process.env.REACT_APP_WEBSOCKET_URL;
-  console.log('rendering chat')
 
   const { conv_id } = queryString.parse(location.search);
 
@@ -116,7 +116,8 @@ export default function Chat({ location }) {
     const { conv_id } = queryString.parse(location.search);
     setRoom(conv_id);
     socket = io(ENDPOINT);
-    socket.emit("join", { conv_id }, () => {});
+    socket.emit("join", { conv_id }, () => {
+    });
 
     socket.on("message", (message) => {
       setMessages((prev) => [...prev, message]);
@@ -136,29 +137,22 @@ export default function Chat({ location }) {
     }
   };
 
-  // if(typing) {
-  //   console.log('are we getting here');
-  //   socket.emit('typing', { typing })
-  // }
-
-
   let timeout;
   const userTyping = (key) => {
     if (key === 'Enter') {
       setTyping(false);
     }
     socket.emit('typing', { typing })
-    console.log('are we calling this');
   }
 
   useEffect(() => {
     socket.on('display', (data) => {
+      console.log('data from the socket', data.id)
       setTyping(true);
       clearTimeout(timeout);
       timeout = setTimeout(() => {
         setTyping(false)
       }, 2000)
-      console.log('here after socket');
     });
     return clearTimeout(timeout);
   }, [])
@@ -189,7 +183,7 @@ export default function Chat({ location }) {
         </div>
         {conv_id ? (
           <div className={classes.chat}>
-            <Feed messages={messages} userID={cookie.user.id} typing={typing}/>
+            <Feed messages={messages} userID={cookie.user.id} typing={typing} />
             <Input sendMessage={sendMessage} userTyping={userTyping}/>
           </div>
         ) : (

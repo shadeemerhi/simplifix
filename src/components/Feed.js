@@ -22,8 +22,8 @@ const useStyles = makeStyles((theme) => ({
 
   typing: {
     display: 'flex',
-    justifyContent: 'center',
-    fontSize: '12pt'
+    justifyContent: 'flex-start',
+    margin: '0.5rem 0.5rem 0.5rem 0.5rem'
   }
 
 }));
@@ -32,6 +32,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Feed(props) {
 
   const { messages, userID, typing } = props;
+
   // messages = null;
 
   const classes = useStyles();
