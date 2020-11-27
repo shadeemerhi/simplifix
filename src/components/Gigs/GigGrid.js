@@ -22,6 +22,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+const randomNum = () => {
+  return Math.random() * 6 + 2;
+};
+
 export default function GigGrid(props) {
   const classes = useStyles();
 
@@ -38,7 +42,7 @@ export default function GigGrid(props) {
                 name={gig.title}
                 avatar={gig.photo_one}
                 description={gig.description}
-                rating={4}
+                rating={randomNum}
                 category={props.category}
                 gig={gig}
               />
