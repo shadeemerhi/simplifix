@@ -106,7 +106,8 @@ export default function Chat({ location }) {
   const [userID, setUserID] = useState(null);
   // const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-  const ENDPOINT = "localhost:8080";
+  // const ENDPOINT = "localhost:8080";
+  const ENDPOINT = process.env.REACT_APP_WEBSOCKET_URL;
 
   const { conv_id } = queryString.parse(location.search);
 
