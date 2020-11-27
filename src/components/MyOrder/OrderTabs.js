@@ -96,8 +96,8 @@ export default function OrderTabs(props) {
             variant="fullWidth"
             aria-label="full width tabs example"
           >
-            <Tab label="Order Request" {...a11yProps(0)} />
-            <Tab label="Order Received" {...a11yProps(1)} />
+            <Tab label="Order Requests" {...a11yProps(0)} />
+            <Tab label="Orders Received" {...a11yProps(1)} />
           </Tabs>
         </AppBar>
         <SwipeableViews
