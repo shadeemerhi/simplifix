@@ -48,8 +48,8 @@ const getAllOrdersbyClientId = (cookie, state) => {
 };
 
 const getUserById = (id, users) => {
-  return users && users.find(user => user.id === id);
-}
+  return users && users.find((user) => user.id === id);
+};
 const getDateFormat = (date) => {
   const options = {
     weekday: "long",
@@ -73,6 +73,32 @@ const dateBooked = (date, disabledDate) => {
   );
 };
 
+const dispatch = (message, state, setState) => {
+  const { type, action, data } = message;
+  switch (action) {
+    case "CREATE": {
+      const newDataArr = [...state[type]];
+      newDataArr.push(data);
+      const newState = { ...state };
+      newState[type] = newDataArr;
+      setState(newState);
+      break;
+    }
+    case "UPDATE": {
+      const prevDataArr = [...state[type]];
+      const newDataArr = prevDataArr.map((item) => {
+        return item.id === data.id ? { ...item, ...data } : item;
+      });
+      const newState = { ...state };
+      newState[type] = newDataArr;
+      setState(newState);
+      break;
+    }
+    default:
+      break;
+  }
+};
+
 export {
   getGigbyUserId,
   check,
@@ -82,4 +108,5 @@ export {
   getDateFormat,
   getDayFormat,
   dateBooked,
+  dispatch
 };

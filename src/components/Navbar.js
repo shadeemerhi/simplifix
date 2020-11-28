@@ -122,6 +122,9 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Navbar(props) {
   const { cookie, setCookie } = useContext(UserCookie);
+  const ordersNotPaid =
+    props.ordersByUser &&
+    props.ordersByUser.filter((order) => order.status !== "paid");
 
   const classes = useStyles();
   const [anchorEl, setAnchorEl] = React.useState(null);
@@ -200,7 +203,7 @@ export default function Navbar(props) {
           </MenuItem>
           <MenuItem>
             <IconButton aria-label="show new notifications" color="inherit">
-              <Badge badgeContent={props.ordersByUser.length} color="secondary">
+              <Badge badgeContent={ordersNotPaid.length} color="secondary">
                 <NotificationsIcon />
               </Badge>
             </IconButton>
@@ -324,10 +327,7 @@ export default function Navbar(props) {
                   </Badge>
                 </IconButton>
                 <IconButton aria-label="show new notifications" color="inherit">
-                  <Badge
-                    badgeContent={props.ordersByUser.length}
-                    color="secondary"
-                  >
+                  <Badge badgeContent={ordersNotPaid.length} color="secondary">
                     <NotificationsIcon />
                   </Badge>
                 </IconButton>
