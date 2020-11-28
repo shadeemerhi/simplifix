@@ -1,9 +1,11 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import {UserCookie} from "../../hooks/UserCookie";
 import { loadStripe } from "@stripe/stripe-js";
 import Fab from "@material-ui/core/Fab";
 import MonetizationOnIcon from "@material-ui/icons/MonetizationOn";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 import { yellow } from "@material-ui/core/colors";
+import axios from "axios";
 
 const theme = createMuiTheme({
   palette: {
@@ -26,24 +28,33 @@ const Message = ({ message }) => (
 );
 export default function Stripe(props) {
   const order = props.order;
-  console.log("order :", order);
+  const {state, setState} = useContext(UserCookie);
   const [message, setMessage] = useState("");
+  const updateOrder = (order, state) => {
+    return [...state.orders].map((item) => {
+      return item.id === order.id ? {...item, ...order} : item;
+    });
+  }
 
   const ProductDisplay = ({ handleClick }) => (
     <section>
-      <ThemeProvider theme={theme}>
-        <Fab
-          variant="extended"
-          color="primary"
-          id="checkout-button"
-          disabled={order.status !== "completed"}
-          role="link"
-          onClick={handleClick}
-        >
-          <MonetizationOnIcon style={{ marginRight: "0.3em" }} />
-          {order.final_price ? `Pay $${order.final_price}` : `Payment`}
-        </Fab>
-      </ThemeProvider>
+      {order.status !== "paid" && (
+        <ThemeProvider theme={theme}>
+          <Fab
+            variant="extended"
+            color="primary"
+            id="checkout-button"
+            disabled={order.status !== "completed"}
+            role="link"
+            onClick={handleClick}
+          >
+            <MonetizationOnIcon style={{ marginRight: "0.3em" }} />
+            {order.status === "completed"
+              ? `Pay $${order.final_price}`
+              : `Payment`}
+          </Fab>
+        </ThemeProvider>
+      )}
     </section>
   );
 
@@ -61,6 +72,7 @@ export default function Stripe(props) {
   }, []);
 
   const handleClick = async (event) => {
+    const newOrder = { ...order, status: "paid" };
     const stripe = await stripePromise;
     const response = await fetch("/create-session", {
       method: "POST",
@@ -68,29 +80,29 @@ export default function Stripe(props) {
         "Content-type": "application/json; charset=UTF-8",
       }),
       // PASS ORDER DATA HERE
-      body: JSON.stringify({ order }),
+      body: JSON.stringify({ ...order }),
     });
     const session = await response.json();
+    
+    const patchOrderUpdates = await axios.patch(`/api/orders/${order.id}`, newOrder);
+
+    if (patchOrderUpdates.error) {
+      console.log(patchOrderUpdates.error);
+    }
+
+    const orders = await updateOrder(newOrder, state);
+    await setState({...state, orders});
+
     // When the customer clicks on the button, redirect them to Checkout.
     const result = await stripe.redirectToCheckout({
       sessionId: session.id,
     });
-
-    console.log("order front:", { ...order, status: "paid" });
-    await fetch(`/api/orders/${order.id}`, {
-      method: "PATCH",
-      headers: new Headers({
-        "Content-type": "application/json; charset=UTF-8",
-      }),
-      // PASS ORDER DATA HERE
-      body: JSON.stringify({ ...order, status: "paid" }),
-    });
-
     if (result.error) {
       // If `redirectToCheckout` fails due to a browser or network
       // error, display the localized error message to your customer
       // using `result.error.message`.
     }
+    
   };
 
   return message ? (
