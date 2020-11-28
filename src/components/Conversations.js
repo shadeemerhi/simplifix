@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import axios from 'axios';
 import Conversation from './Conversation';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
 const useStyles = makeStyles((props) => ({
   root: {
@@ -30,27 +31,52 @@ export default function Conversations(props) {
   const classes = useStyles(props);
   const { userID } = props;
   const [conversations, setConversations] = useState([]);
+  const [loadingConversations, setLoadingConversations] = useState(true);
+
   // console.log('in conversations !!!!', props.conv_id)
 
   useEffect(() => {
     axios.get(`/api/conversations/${userID}`)
     .then(response => {
       setConversations(response.data);
+      setLoadingConversations(false);
     })
   },[])
 
   return (
-    conversations.length !== 0 ? (
-      <div className={classes.root}>
-      <h3 className={classes.title}>Conversations</h3>
-      {conversations.map(conversation => {
-          return <Conversation conv_id={props.conv_id} {...conversation} userID={userID}/>
-      })}
+
+    ! loadingConversations ? (
+     <div>
+       {conversations.length !== 0 ? (
+        <div className={classes.root}>
+          <h3 className={classes.title}>Conversations</h3>
+          {conversations.map(conversation => {
+              return <Conversation conv_id={props.conv_id} {...conversation} userID={userID}/>
+          })}
+        </div>
+      ) : 
+        <div className={`${classes.root} ${classes.empty}`}>
+          <h3 className={classes.title}>No Conversations</h3>
+        </div>
+       }
+     </div> 
+    ) : 
+    <div>
+        <CircularProgress size={'60px'} color={`black`}/>
     </div>
-    ) 
-    : 
-      <div className={`${classes.root} ${classes.empty}`}>
-        <h3 className={classes.title}>No Conversations</h3>
-      </div>
+    
+    // conversations.length !== 0 ? (
+    //   <div className={classes.root}>
+    //   <h3 className={classes.title}>Conversations</h3>
+    //   {conversations.map(conversation => {
+    //       return <Conversation conv_id={props.conv_id} {...conversation} userID={userID}/>
+    //   })}
+    // </div>
+    // ) 
+    // : 
+    //   <div className={`${classes.root} ${classes.empty}`}>
+    //     <h3 className={classes.title}>No Conversations</h3>
+    //   </div>
+
   )
 }

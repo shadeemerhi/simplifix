@@ -31,15 +31,13 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Feed(props) {
 
-  const { messages, userID, typing } = props;
-
-  // messages = null;
+  const { messages, userID, typing, loadingMessages } = props;
 
   const classes = useStyles();
 
   return (
 
-    messages ? (
+    ! loadingMessages ? (
       <ScrollToBottom className={classes.scroll} mode='bottom'>
       {messages.map(message => {
         return(
@@ -52,7 +50,7 @@ export default function Feed(props) {
         </div> : null}
     </ScrollToBottom>
     ) : (<div className={classes.loading}>
-      <CircularProgress size={`100px`} color={`black`}/>
+      <CircularProgress size={'100px'} color={`black`}/>
     </div>)
 
   

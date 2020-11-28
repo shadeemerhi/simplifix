@@ -5,9 +5,6 @@ const useStyles = makeStyles((theme) => ({
   form: {
     display: 'flex',
     marginTop: '1.2rem'
-    // justifyContent: 'space-between',
-    // width: '100%',
-    // maxHeight: '10%',
   },
 
   input: {
