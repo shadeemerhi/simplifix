@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { makeStyles } from '@material-ui/core/styles';
 import CircularProgress from '@material-ui/core/CircularProgress';
+import axios from 'axios';
 
 const useStyles = makeStyles((props) => ({
   root: {
@@ -15,7 +16,16 @@ const useStyles = makeStyles((props) => ({
     margin: '0.5rem 0rem 0.5rem 0rem',
     transition: '0.2s ease-in-out',
     textDecoration: 'none',
-    background: props => props.id === parseInt(props.conv_id) ? '#0EE290' : 'white',
+    // background: props => props.id === parseInt(props.conv_id) ? '#0EE290' : 'white',
+    background: props => {
+      if (props.id === parseInt(props.conv_id)) {
+        return '#0EE290'
+      } else if (props.id !== props.conv_id && props.clicked === false) {
+        return '#ffa400a6'
+      } else {
+        return 'white'
+      }
+    },
     '&:hover': {
       background: '#0EE290',
       color: 'white'
@@ -30,13 +40,29 @@ const useStyles = makeStyles((props) => ({
   }
 }));
 
+const updateClicked = (id, clicked, setClicked) => {
+  // console.log('clicked', clicked);
+  // console.log('setCicked', setClicked);
+  if(! clicked) {
+    axios.patch(`/api/conversations/${id}`).then(response => {
+      // console.log(response.data);
+      // setClicked(true);
+    })
+  }
+  return null;
+}
+
 export default function Conversation(props) {
 
   const classes = useStyles(props);
+  console.log('props', props.clicked);
 
   return(
     props.userID === props.client_id ? (
-      <Link to={`/chat/?conv_id=${props.id}`} className={classes.root}>
+      <Link to={`/chat/?conv_id=${props.id}`} className={classes.root} onClick={() => {
+        updateClicked(props.id, props.clicked)
+        props.setClicked(true);
+      }}>
         {props.id ? 
           <div className={classes.root}>
             <div className={classes.link}>
@@ -48,7 +74,10 @@ export default function Conversation(props) {
         }
       </Link>
     ) : (
-    <Link to={`/chat/?conv_id=${props.id}`} className={classes.root}>
+    <Link to={`/chat/?conv_id=${props.id}`} className={classes.root} onClick={() => {
+      updateClicked(props.id, props.clicked)
+      props.setClicked(true);
+    }}>
     <div className={classes.root}>
       <div className={classes.link}>
         <p className={classes.link}>{props.client_first} {props.client_last}</p>

@@ -32,18 +32,24 @@ export default function Conversations(props) {
   const { userID } = props;
   const [conversations, setConversations] = useState([]);
   const [loadingConversations, setLoadingConversations] = useState(true);
+  const [clicked, setClicked] = useState(false);
 
   // console.log('in conversations !!!!', props.conv_id)
 
   useEffect(() => {
     axios.get(`/api/conversations/${userID}`)
     .then(response => {
+      // console.log('conversations', response.data);
       setConversations(response.data);
       setLoadingConversations(false);
+      setClicked(false);
     })
-  },[])
+  },[clicked])
+
+  // console.log(clicked)
 
   return (
+
 
     ! loadingConversations ? (
      <div>
@@ -51,7 +57,8 @@ export default function Conversations(props) {
         <div className={classes.root}>
           <h3 className={classes.title}>Conversations</h3>
           {conversations.map(conversation => {
-              return <Conversation conv_id={props.conv_id} {...conversation} userID={userID}/>
+            // console.log('single convo', conversation);
+              return <Conversation conv_id={props.conv_id} {...conversation} userID={userID} setClicked={setClicked}/>
           })}
         </div>
       ) : 
