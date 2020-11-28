@@ -97,6 +97,7 @@ export default function Chat({ location }) {
   const { cookie } = useContext(UserCookie);
   const [room, setRoom] = useState(null);
   const [messages, setMessages] = useState([]);
+  const [loadingMessages, setLoadingMessages] = useState(true);
   const [typing, setTyping] = useState(false);
   const ENDPOINT = process.env.REACT_APP_WEBSOCKET_URL;
 
@@ -106,6 +107,7 @@ export default function Chat({ location }) {
     if (conv_id) {
       axios.get(`/api/messages/${conv_id}`).then((response) => {
         setMessages(response.data);
+        setLoadingMessages(false);
       });
     }
   }, [room]);
@@ -184,7 +186,7 @@ export default function Chat({ location }) {
         </div>
         {conv_id ? (
           <div className={classes.chat}>
-            <Feed messages={messages} userID={cookie.user.id} typing={typing} />
+            <Feed messages={messages} userID={cookie.user.id} typing={typing} loadingMessages={loadingMessages}/>
             <Input sendMessage={sendMessage} userTyping={userTyping}/>
           </div>
         ) : (
