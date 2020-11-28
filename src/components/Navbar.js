@@ -30,7 +30,6 @@ const useStyles = makeStyles((theme) => ({
     border: 0,
     boxShadow: "0 3px 5px 2px grey",
     color: "black",
-    padding: "0 30px",
     position: "fixed",
     top: 0,
   },
