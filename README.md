@@ -9,10 +9,10 @@ API @ https://github.com/shadeemerhi/simplifix-api
 
 ## Screenshots
 
-![""](#)
-![""](#)
-![""](#)
-![""](#)
+!["Home page"](https://github.com/shadeemerhi/simplifix/blob/master/docs/home-page.png?raw=true)
+!["Gig details page"](https://github.com/shadeemerhi/simplifix/blob/master/docs/gig-details.png?raw=true)
+!["Messaging page"](https://github.com/shadeemerhi/simplifix/blob/master/docs/messages.png?raw=true)
+!["Bookings page"](https://github.com/shadeemerhi/simplifix/blob/master/docs/bookings.png?raw=true)
 
 ## Dependencies
 
