@@ -109,7 +109,7 @@ export default function ContactCard(props) {
         <h4 className={classes.title}>Location</h4>
         <div className={classes.infoContainer}>
           <LocationOnIcon className={classes.infoItem} />
-          <p classeName={classes.infoItem}>{props.city}</p>
+          <p className={classes.infoItem}>{props.city}</p>
         </div>
       </div>
       <div className={classes.card}>

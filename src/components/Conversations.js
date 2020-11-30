@@ -30,27 +30,23 @@ export default function Conversations(props) {
   const { userID } = props;
   const [conversations, setConversations] = useState([]);
   const [loadingConversations, setLoadingConversations] = useState(true);
+  const [clicked, setClicked] = useState(false);
 
   useEffect(() => {
     axios.get(`/api/conversations/${userID}`).then((response) => {
       setConversations(response.data);
       setLoadingConversations(false);
-    });
-  }, []);
+      setClicked(false);
+    })
+  },[clicked])
 
   return !loadingConversations ? (
     <div>
       {conversations.length !== 0 ? (
         <div className={classes.root}>
           <h3 className={classes.title}>Conversations</h3>
-          {conversations.map((conversation) => {
-            return (
-              <Conversation
-                conv_id={props.conv_id}
-                {...conversation}
-                userID={userID}
-              />
-            );
+          {conversations.map(conversation => {
+              return <Conversation conv_id={props.conv_id} {...conversation} userID={userID} setClicked={setClicked}/>
           })}
         </div>
       ) : (
