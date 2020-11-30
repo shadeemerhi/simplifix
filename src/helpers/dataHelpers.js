@@ -108,5 +108,5 @@ export {
   getDateFormat,
   getDayFormat,
   dateBooked,
-  dispatch
+  dispatch,
 };

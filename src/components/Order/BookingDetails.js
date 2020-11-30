@@ -10,7 +10,7 @@ import ExpandMoreIcon from "@material-ui/icons/ExpandMore";
 import Chip from "@material-ui/core/Chip";
 import Button from "@material-ui/core/Button";
 import Divider from "@material-ui/core/Divider";
-import {getDateFormat,getDayFormat} from "../../helpers/dataHelpers";
+import { getDateFormat, getDayFormat } from "../../helpers/dataHelpers";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -49,9 +49,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function BookingDetails(props) {
-  
   const classes = useStyles();
-  
 
   return (
     <div className={classes.root}>
@@ -91,8 +89,7 @@ export default function BookingDetails(props) {
           <div className={clsx(classes.column, classes.helper)}>
             <Typography variant="caption">
               {props.gig.description}
-              <br />
-            ${props.gig.price}/hr
+              <br />${props.gig.price}/hr
             </Typography>
           </div>
         </AccordionDetails>
@@ -101,7 +98,12 @@ export default function BookingDetails(props) {
           <Button size="small" onClick={() => props.setSelectedDate(null)}>
             Reset
           </Button>
-          <Button size="small" color="primary" onClick={props.onclick} disabled={!props.selectedDate}>
+          <Button
+            size="small"
+            color="primary"
+            onClick={props.onclick}
+            disabled={!props.selectedDate}
+          >
             Confirm
           </Button>
         </AccordionActions>

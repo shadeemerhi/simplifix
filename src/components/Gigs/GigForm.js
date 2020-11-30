@@ -104,7 +104,7 @@ export default function GigForm(props) {
       setGigId(res.data.id);
       setPostSuccessful(true);
       const gigs = [...state.gigs, res.data];
-      setState({...state, gigs});
+      setState({ ...state, gigs });
     });
   };
   if (postSuccessful) {

@@ -66,7 +66,7 @@ export default function SignUp() {
   const createUser = (user) => {
     return axios.put(`/api/users`, user).then((res) => {
       const users = [...state.users, user];
-      setState({...state, users});
+      setState({ ...state, users });
       setCookie((prev) => ({ ...prev, ...res.data }));
     });
   };

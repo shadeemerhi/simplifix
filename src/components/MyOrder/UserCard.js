@@ -1,5 +1,9 @@
 import React from "react";
-import { makeStyles, createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import {
+  makeStyles,
+  createMuiTheme,
+  ThemeProvider,
+} from "@material-ui/core/styles";
 import Card from "@material-ui/core/Card";
 import Grid from "@material-ui/core/Grid";
 import CardContent from "@material-ui/core/CardContent";
@@ -55,8 +59,8 @@ const useStyles = makeStyles((theme) => ({
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: orange[300]
-    }
+      main: orange[300],
+    },
   },
 });
 
@@ -66,32 +70,32 @@ export default function RecipeReviewCard(props) {
 
   return (
     <Card className={classes.root}>
+      <Grid
+        container
+        direction="row"
+        justify="center"
+        alignItems="center"
+        spacing={2}
+        wrap="nowrap"
+        className={`${classes.header} ${classes.avatarContent}`}
+      >
+        <Avatar alt={role} src={user.avatar_img} />
         <Grid
           container
-          direction="row"
-          justify="center"
-          alignItems="center"
-          spacing={2}
-          wrap="nowrap"
-          className={`${classes.header} ${classes.avatarContent}`}
+          direction="column"
+          classes={classes.nameTitle}
+          style={{ textAlign: "left", marginLeft: "1em" }}
         >
-          <Avatar alt={role} src={user.avatar_img} />
-          <Grid
-            container
-            direction="column"
-            classes={classes.nameTitle}
-            style={{ textAlign: "left", marginLeft: "1em" }}
-          >
-            <ThemeProvider theme={theme}>
+          <ThemeProvider theme={theme}>
             <Typography variant="h6" color="textSecondary" component="p">
               {user.first_name} {user.last_name}
             </Typography>
             <Typography variant="subtitle2" color="primary" component="h2">
               {role}
             </Typography>
-            </ThemeProvider>
-          </Grid>
+          </ThemeProvider>
         </Grid>
+      </Grid>
       <CardContent>
         <Grid
           container

@@ -52,15 +52,9 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function GigItemList(props) {
-
   let history = useHistory();
 
-  const {
-    id,
-    title,
-    description,
-    photo_one,
-  } = props.gig;
+  const { id, title, description, photo_one } = props.gig;
 
   const classes = useStyles();
   return (

@@ -1,9 +1,5 @@
 import React, { useEffect, useState } from "react";
-import {
-  Route,
-  useParams,
-  Switch,
-} from "react-router-dom";
+import { Route, useParams, Switch } from "react-router-dom";
 import GigPage from "./GigPage";
 import GigGrid from "./Gigs/GigGrid";
 import axios from "axios";
@@ -26,11 +22,6 @@ export default function CategoryPage() {
         setGigs(response.data);
       });
   }, []);
-
-  // const getGig = (id) => {
-  //   const gig = gigs.find(gig => gig.id == id);
-  //   setGig(gig);
-  // }
 
   return (
     <div>

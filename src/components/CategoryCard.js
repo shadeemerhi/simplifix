@@ -9,7 +9,6 @@ import Typography from "@material-ui/core/Typography";
 const useStyles = makeStyles({
   root: {
     maxWidth: 900,
-    // margin: '0rem 2rem 2rem 1rem',
     height: "auto",
     position: "relative",
   },

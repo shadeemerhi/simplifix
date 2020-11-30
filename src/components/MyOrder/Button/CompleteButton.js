@@ -1,5 +1,5 @@
-import React, {useState} from "react";
-import OrderPrice from './OrderPrice';
+import React, { useState } from "react";
+import OrderPrice from "./OrderPrice";
 import Fab from "@material-ui/core/Fab";
 import CloudDoneIcon from "@material-ui/icons/CloudDone";
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
@@ -18,14 +18,13 @@ export default function CompleteButton(props) {
     setOpen(true);
   };
 
-  
   return (
     <ThemeProvider theme={theme}>
       <Fab variant="extended" color="primary" onClick={handleClickOpen}>
         <CloudDoneIcon style={{ marginRight: "0.3em" }} />
         Complete
       </Fab>
-      <OrderPrice open={open} setOpen={setOpen} order={props.order}/>
+      <OrderPrice open={open} setOpen={setOpen} order={props.order} />
     </ThemeProvider>
   );
 }

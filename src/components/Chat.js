@@ -116,8 +116,7 @@ export default function Chat({ location }) {
     const { conv_id } = queryString.parse(location.search);
     setRoom(conv_id);
     socket = io(ENDPOINT);
-    socket.emit("join", { conv_id }, () => {
-    });
+    socket.emit("join", { conv_id }, () => {});
 
     socket.on("message", (message) => {
       setMessages((prev) => [...prev, message]);
@@ -139,26 +138,25 @@ export default function Chat({ location }) {
 
   let timeout;
   const userTyping = (key) => {
-    if (key === 'Enter') {
+    if (key === "Enter") {
       clearTimeout(timeout);
       setTyping(false);
-      socket.emit('typing', { typing: false })
+      socket.emit("typing", { typing: false });
     } else {
-      socket.emit('typing', { typing: true })
+      socket.emit("typing", { typing: true });
     }
-  }
+  };
 
   useEffect(() => {
-    socket.on('display', (data) => {
+    socket.on("display", (data) => {
       setTyping(data.data.typing);
       clearTimeout(timeout);
       timeout = setTimeout(() => {
-        setTyping(false)
-      }, 2000)
+        setTyping(false);
+      }, 2000);
     });
     return clearTimeout(timeout);
-  }, [room])
-
+  }, [room]);
 
   return cookie.user ? (
     <div className={classes.root}>
@@ -186,8 +184,13 @@ export default function Chat({ location }) {
         </div>
         {conv_id ? (
           <div className={classes.chat}>
-            <Feed messages={messages} userID={cookie.user.id} typing={typing} loadingMessages={loadingMessages}/>
-            <Input sendMessage={sendMessage} userTyping={userTyping}/>
+            <Feed
+              messages={messages}
+              userID={cookie.user.id}
+              typing={typing}
+              loadingMessages={loadingMessages}
+            />
+            <Input sendMessage={sendMessage} userTyping={userTyping} />
           </div>
         ) : (
           <div className={classes.emptyChat}>

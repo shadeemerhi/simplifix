@@ -7,7 +7,6 @@ import DateFnsUtils from "@date-io/date-fns";
 import { dateBooked } from "../../helpers/dataHelpers";
 
 export default function TimePicker(props) {
- 
   const orderDate = new Date(props.orderDate);
   const [selectedDate, handleDateChange] = useState(orderDate);
   const disabledDate = props.disabledDate;
@@ -15,7 +14,7 @@ export default function TimePicker(props) {
   return (
     <MuiPickersUtilsProvider utils={DateFnsUtils}>
       <KeyboardDateTimePicker
-       disabled={props.status === "completed"}
+        disabled={props.status === "completed"}
         shouldDisableDate={(date) => dateBooked(date, disabledDate)}
         value={selectedDate}
         onChange={handleDateChange}

@@ -64,18 +64,14 @@ export default function ContactCard(props) {
 
   const findConversation = () => {
     let conversation;
-    console.log("client_id", cookie.user.id);
-    console.log("contractor_id", contractor_id);
+
     axios.get("/api/conversations").then((response) => {
-      console.log("from the api", response.data);
       conversation = check(cookie.user.id, contractor_id, response.data);
-      console.log("from function", conversation);
+
       if (conversation) {
         setConversationID(conversation.id);
         setRedirect(true);
-        console.log(conversation.id);
       } else {
-        console.log("cookie", cookie);
         axios
           .put("/api/conversations", {
             client_id: cookie.user.id,
@@ -86,7 +82,6 @@ export default function ContactCard(props) {
             contractor_last: props.last_name,
           })
           .then((response) => {
-            console.log("after post", response.data.id);
             setConversationID(response.data.id);
             setRedirect(true);
           });

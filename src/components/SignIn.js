@@ -5,7 +5,7 @@ import { green } from "@material-ui/core/colors";
 import Grid from "@material-ui/core/Grid";
 import Button from "@material-ui/core/Button";
 import axios from "axios";
-import {UserCookie} from "../hooks/UserCookie";
+import { UserCookie } from "../hooks/UserCookie";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -16,17 +16,17 @@ const useStyles = makeStyles((theme) => ({
   },
 
   formContainer: {
-    display: 'flex',
-    flexDirection: 'column',
+    display: "flex",
+    flexDirection: "column",
     borderRadius: "8px",
-    padding: '2rem',
-    margin: '2rem',
+    padding: "2rem",
+    margin: "2rem",
     boxShadow: "1px 2px 2px 2px lightgrey",
   },
 
   field: {
-    marginTop: '1.5rem',
-    marginBottom: '1.5rem'
+    marginTop: "1.5rem",
+    marginBottom: "1.5rem",
   },
 
   submitBtn: {
@@ -36,25 +36,27 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-
 export default function SignIn() {
-  const {setCookie} = useContext(UserCookie);
+  const { setCookie } = useContext(UserCookie);
   const classes = useStyles();
 
   const [user, setUser] = useState({
-    email: '',
-    password: ''
-  })
+    email: "",
+    password: "",
+  });
 
   const handleChange = (prop) => (event) => {
-    setUser({...user, [prop]: event.target.value})
-  }  
+    setUser({ ...user, [prop]: event.target.value });
+  };
 
   const loginUser = (user) => {
-    return axios.post('/login', user).then(res => {
-      setCookie(prev => ({...prev, ...res.data}))
-    }).catch(err => console.log(err))
-  }
+    return axios
+      .post("/login", user)
+      .then((res) => {
+        setCookie((prev) => ({ ...prev, ...res.data }));
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <Grid container className={classes.root}>
@@ -81,7 +83,7 @@ export default function SignIn() {
               shrink: true,
             }}
             value={user.email}
-            onChange={handleChange('email')}
+            onChange={handleChange("email")}
           />
           <TextField
             className={classes.field}
@@ -95,7 +97,7 @@ export default function SignIn() {
               shrink: true,
             }}
             value={user.password}
-            onChange={handleChange('password')}
+            onChange={handleChange("password")}
           />
           <Button
             type="submit"

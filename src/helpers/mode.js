@@ -1,7 +1,7 @@
-const START = 'START';
-const SELECT = 'SELECT';
-const PENDING = 'PENDING';
-const SUCCESS = 'SUCCESS';
-const FAILED = 'FAILED';
+const START = "START";
+const SELECT = "SELECT";
+const PENDING = "PENDING";
+const SUCCESS = "SUCCESS";
+const FAILED = "FAILED";
 
-export {START, SELECT, PENDING, SUCCESS, FAILED};
+export { START, SELECT, PENDING, SUCCESS, FAILED };

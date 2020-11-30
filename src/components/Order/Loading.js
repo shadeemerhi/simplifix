@@ -24,16 +24,25 @@ animation-delay: ${(props) => props.delay};
 `;
 
 export default function Loading(props) {
-  const {gig, contractor} = props;
+  const { gig, contractor } = props;
   const str = `Booking a ${gig.title} Service With ${contractor.first_name} ${contractor.last_name}`;
-  const arr = str.split("").map(char => ({char: char, color: randomColor({
-    luminosity: 'bright',
-    hue: "monochrome",
-    format: 'rgba',
-    alpha: 0.7
- })}));
- 
-  return <Wrapper>
-    {arr.map((char, index) => <Char delay={`${index/2}s`} color={char.color}>{char.char}</Char>)}
-  </Wrapper>;
+  const arr = str.split("").map((char) => ({
+    char: char,
+    color: randomColor({
+      luminosity: "bright",
+      hue: "monochrome",
+      format: "rgba",
+      alpha: 0.7,
+    }),
+  }));
+
+  return (
+    <Wrapper>
+      {arr.map((char, index) => (
+        <Char delay={`${index / 2}s`} color={char.color}>
+          {char.char}
+        </Char>
+      ))}
+    </Wrapper>
+  );
 }

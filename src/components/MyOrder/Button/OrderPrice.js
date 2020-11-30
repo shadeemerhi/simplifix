@@ -46,18 +46,18 @@ export default function OrderPrice(props) {
   const handleChange = (prop) => (event) => {
     setHours(event.target.value);
   };
-  
+
   const onComplete = (order, option) => {
-   const id = order.id;
-    const updateOrder = { id, status: "completed", ...option};
+    const id = order.id;
+    const updateOrder = { id, status: "completed", ...option };
     const orders = [...state.orders].map((item) => {
-      return item.id === id ? {...item, ...updateOrder} : item;
+      return item.id === id ? { ...item, ...updateOrder } : item;
     });
-    
-   axios
+
+    axios
       .patch(`/api/orders/${id}`, updateOrder)
       .then((res) => {
-        setState({...state, orders});
+        setState({ ...state, orders });
       })
       .catch((err) => console.log(err));
   };
