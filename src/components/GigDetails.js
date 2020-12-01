@@ -59,8 +59,7 @@ export default function GigDetails(props) {
       <div className={classes.card}>
         <h4>Recent Jobs</h4>
         <p>
-          This is going to be some other text. I am just writing this to see how
-          it looks on the page.
+          Recent jobs include: HiRise Downtown Vancouver, Starbucks Reserve Vancouver, Platinum Storage East Vancouver
         </p>
       </div>
     </div>

@@ -18,9 +18,17 @@ const useStyles = makeStyles((theme) => ({
   control: {
     padding: theme.spacing(2),
   },
+
+  titleContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+  },
+
   title: {
     margin: "2rem 0rem 2rem 0rem",
     textAlign: "center",
+    borderBottom: '2px solid #0EE290',
+    width: '15%'
   },
 }));
 
@@ -41,7 +49,9 @@ export default function GigGrid(props) {
   return (
     <Grid container className={classes.root}>
       <Grid item xs={12}>
-        <h1 className={classes.title}>Top Gigs</h1>
+        <div className={classes.titleContainer}>
+          <h1 className={classes.title}>Top Gigs</h1>
+        </div>
         <Grid container justify="center">
           {gigs.map((gig) => {
             return (
