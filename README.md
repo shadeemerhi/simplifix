@@ -11,28 +11,39 @@ The front-end has been deployed to Netlify and the live site can be found [here]
 
 ### Home page
 
+!["Home page"]()
+
 ### Gigs page
+
+!["Browsing gigs"]()
 
 ### Individual Gig details
 
-### Live messaging
+!["Individual Gig details"]()
 
-### Booking a contractor
+### Live messaging between clients and contractors
 
-### Booking confirmation
+!["Live messaging between clients and contractors"]()
+
+### Placing a booking
+
+!["Placing a booking"]()
+
+### Booking confirmation (left is Client, right is Contractor)
+
+!["Booking confirmation"]()
+
+### After the Gig completion, the Contractor can specify hours (left is Client, right is Contractor)
+
+!["Specifying hours worked"]()
 
 ### Payments with Stripe
 
-### Creating a gig
+!["Payments with Stripe"]()
 
-### Creating a profile
+### New Gig form
 
-###
-
-!["Home page"](https://github.com/shadeemerhi/simplifix/blob/master/docs/home-page.png?raw=true)
-!["Gig details page"](https://github.com/shadeemerhi/simplifix/blob/master/docs/gig-details.png?raw=true)
-!["Messaging page"](https://github.com/shadeemerhi/simplifix/blob/master/docs/messages.png?raw=true)
-!["Bookings page"](https://github.com/shadeemerhi/simplifix/blob/master/docs/bookings.png?raw=true)
+!["Creating a new Gig"]()
 
 ## Dependencies
 
