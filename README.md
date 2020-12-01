@@ -11,43 +11,43 @@ The front-end has been deployed to Netlify and the live site can be found [here]
 
 ### Home page
 
-!["Home page"]()
+!["Home page"](https://github.com/shadeemerhi/simplifix/blob/master/docs/home.png)
 
 ### Gigs page
 
-!["Browsing gigs"]()
+!["Browsing gigs"](https://github.com/shadeemerhi/simplifix/blob/master/docs/gigs.png)
 
 ### Individual Gig details
 
-!["Individual Gig details"]()
+!["Individual Gig details"](https://github.com/shadeemerhi/simplifix/blob/master/docs/gig.png)
 
-### Live messaging between clients and contractors
+### Live messaging between clients and contractors (Socket IO Implementation)
 
-!["Live messaging between clients and contractors"]()
+!["Live messaging between clients and contractors"](https://github.com/shadeemerhi/simplifix/blob/master/docs/messaging.gif)
 
 ### Placing a booking
 
-!["Placing a booking"]()
+!["Placing a booking"](https://github.com/shadeemerhi/simplifix/blob/master/docs/booking.gif)
 
-### Booking confirmation (left is Client, right is Contractor)
+### Booking confirmation (left is Client, right is Contractor, Socket IO Implementation)
 
-!["Booking confirmation"]()
+!["Booking confirmation"](https://github.com/shadeemerhi/simplifix/blob/master/docs/bookingconfirm.gif)
 
 ### After the Gig completion, the Contractor can specify hours (left is Client, right is Contractor)
 
-!["Specifying hours worked"]()
+!["Specifying hours worked"](https://github.com/shadeemerhi/simplifix/blob/master/docs/hours.gif)
 
 ### Payments with Stripe
 
-!["Payments with Stripe"]()
+!["Payments with Stripe"](https://github.com/shadeemerhi/simplifix/blob/master/docs/payment.gif)
 
 ### Order history after payment has been received
 
-!["Order history after payment has been received"]()
+!["Order history after payment has been received"](https://github.com/shadeemerhi/simplifix/blob/master/docs/paymentdone.png)
 
 ### New Gig form
 
-!["Creating a new Gig"]()
+!["Creating a new Gig"](https://github.com/shadeemerhi/simplifix/blob/master/docs/newgig.png)
 
 ## Dependencies
 
