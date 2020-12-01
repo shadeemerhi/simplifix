@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
   },
 
   title: {
-    marginBottom: "0",
+    marginBottom: "0.5rem",
   },
 
   infoContainer: {
