@@ -54,9 +54,10 @@ The front-end has been deployed to Netlify and the live site can be found [here]
 - React.js
 - Node.js
 - Express
-- cookie-session
 - Socket.io
+- Stripe
 - Material-UI
+- cookie-session
 
 ## Stripe cards
 
