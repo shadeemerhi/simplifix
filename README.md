@@ -41,6 +41,10 @@ The front-end has been deployed to Netlify and the live site can be found [here]
 
 !["Payments with Stripe"]()
 
+### Order history after payment has been received
+
+!["Order history after payment has been received"]()
+
 ### New Gig form
 
 !["Creating a new Gig"]()
