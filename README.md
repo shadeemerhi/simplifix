@@ -5,7 +5,7 @@ Simplifix is an intermediary app where users can find and hire freelance contrac
 This repo is the front-end of Simplifix, which was built using React and Material UI.
 The back-end repo can be found [here](https://github.com/shadeemerhi/simplifix-api) and was built using Node.js and Express in combination with PostgreSQL.
 
-The front-end has been deployed to Netlify and the live site can be found [here](https://mystifying-albattani-f243f1.netlify.app/). The back-end is being hosted by Heroku.
+The front-end has been deployed to Netlify and the live site can be found [here](https://mystifying-albattani-f243f1.netlify.app/). The back-end is being hosted by Heroku. Please note that the app may contain empty data on the first load as the Heroku server is configured to sleep after 30 minutes of inactivity.
 
 Built by: Shadee Merhi, Calvin Zheng and Tom Adam.
 
