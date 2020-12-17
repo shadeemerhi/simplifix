@@ -2,7 +2,7 @@
 
 Built by: Shadee Merhi, Calvin Zheng and Tom Adam.
 
-**Note: For deployment purposes, the original project repository was split into this current repo and the [backend](https://github.com/shadeemerhi/simplifix-api). The commits in this repo and the mentioned backend were primarily deployment configurations; the majority of commits were made in the original repository.
+**Note: For deployment purposes, the original project repository was split into this current repo and the [backend](https://github.com/shadeemerhi/simplifix-api). The commits in this repo and the mentioned backend were primarily deployment configurations; the majority of commits were made in the [original repo](https://github.com/shadeemerhi/react-express-boilerplate).
 
 Simplifix is an intermediary app where users can find and hire freelance contractors for labor-based work by browsing through posted 'gigs' as well as post their own gigs to gain clients if they possess skills in a particular area. Categories of work include, but are not limited to, plumbing, electrical, landscaping, hardwood flooring, and interior design. The platform manages all bookings and payments, and allows for live messaging between clients and contractors.
 
