@@ -1,13 +1,15 @@
 # SimpliFix
 
+Built by: Shadee Merhi, Calvin Zheng and Tom Adam.
+
+**Note: For deployment purposes, the original project repository was split into this current repo and the [backend](https://github.com/shadeemerhi/simplifix-api). The commits in this repo and the mentioned backend were primarily deployment configurations; the majority of commits were made in the original repository.
+
 Simplifix is an intermediary app where users can find and hire freelance contractors for labor-based work by browsing through posted 'gigs' as well as post their own gigs to gain clients if they possess skills in a particular area. Categories of work include, but are not limited to, plumbing, electrical, landscaping, hardwood flooring, and interior design. The platform manages all bookings and payments, and allows for live messaging between clients and contractors.
 
 This repo is the front-end of Simplifix, which was built using React and Material UI.
 The back-end repo can be found [here](https://github.com/shadeemerhi/simplifix-api) and was built using Node.js and Express in combination with PostgreSQL.
 
 The front-end has been deployed to Netlify and the live site can be found [here](https://mystifying-albattani-f243f1.netlify.app/). The back-end is being hosted by Heroku. **Please note that the app may contain empty data on the first load as the Heroku server is configured to sleep after 30 minutes of inactivity.**
-
-Built by: Shadee Merhi, Calvin Zheng and Tom Adam.
 
 ## Final Product
 
