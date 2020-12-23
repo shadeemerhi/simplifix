@@ -62,7 +62,8 @@ export default function ContactCard(props) {
 
   // Initializing state
   const [conversationID, setConversationID] = useState(null);
-  const [redirect, setRedirect] = useState(false);
+  const [redirectChat, setRedirectChat] = useState(false);
+  const [redirectLogin, setRedirectLogin] = useState(false);
 
   const { contractor_id } = props;
 
@@ -77,7 +78,7 @@ export default function ContactCard(props) {
       // If the conversation exists, the application redirects to that conversation room
       if (conversation) {
         setConversationID(conversation.id);
-        setRedirect(true);
+        setRedirectChat(true);
       } else {
         // If the conversation does not exist, it is created
         axios
@@ -92,15 +93,19 @@ export default function ContactCard(props) {
           .then((response) => {
             // After conversation has been put into db, the application redirects to new conversation room
             setConversationID(response.data.id);
-            setRedirect(true);
+            setRedirectChat(true);
           });
       }
     });
   };
 
   // Redirecting to the conversation room
-  if (redirect) {
+  if (redirectChat) {
     return <Redirect to={`/chat/?conv_id=${conversationID}`} />;
+  }
+
+  if (redirectLogin) {
+    return <Redirect to='/signin' />;
   }
 
   return (
@@ -140,7 +145,10 @@ export default function ContactCard(props) {
         className={classes.bookBtn}
         size="large"
         variant="contained"
-        onClick={props.onBooking}
+        // onClick={props.onBooking}
+        onClick={() => {
+          cookie.user ? props.onBooking() : setRedirectLogin(true);
+        }}
       >
         Book
       </Button>
@@ -149,7 +157,9 @@ export default function ContactCard(props) {
         className={classes.submitBtn}
         size="large"
         variant="contained"
-        onClick={() => findConversation()}
+        onClick={() => {
+          cookie.user ? findConversation() : setRedirectLogin(true);
+        }}
       >
         Message
       </Button>
