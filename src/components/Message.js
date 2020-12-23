@@ -41,6 +41,7 @@ const useStyles = makeStyles((theme) => ({
 export default function Message(props) {
   const classes = useStyles();
 
+  // Below logic determines if the current user is the sender of a message; applies conditional styling for sent/received
   return props.user === props.userID || props.sender_id === props.userID ? (
     <div className={classes.root} style={{ justifyContent: "flex-end" }}>
       <div className={`${classes.message} ${classes.sentContainer}`}>

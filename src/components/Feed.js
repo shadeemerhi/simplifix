@@ -31,6 +31,7 @@ export default function Feed(props) {
 
   const classes = useStyles();
 
+  // If messages have not been retrieved from the API, a spinner is shown to indicate application activity
   return !loadingMessages ? (
     <ScrollToBottom className={classes.scroll} mode="bottom">
       {messages.map((message) => {

@@ -92,17 +92,24 @@ const useStyles = makeStyles((theme) => ({
 let socket;
 
 export default function Chat({ location }) {
+
   const classes = useStyles();
 
+  // UserCookie needed to determine conversation/message data for current user
   const { cookie } = useContext(UserCookie);
+
+  // Initializing state
   const [room, setRoom] = useState(null);
   const [messages, setMessages] = useState([]);
   const [loadingMessages, setLoadingMessages] = useState(true);
   const [typing, setTyping] = useState(false);
+
   const ENDPOINT = process.env.REACT_APP_WEBSOCKET_URL;
 
+  // Conversation ID needed from query string; used for messages API call
   const { conv_id } = queryString.parse(location.search);
 
+  // Messages for conversation room retrieved from API
   useEffect(() => {
     if (conv_id) {
       axios.get(`/api/messages/${conv_id}`).then((response) => {
@@ -112,8 +119,10 @@ export default function Chat({ location }) {
     }
   }, [room]);
 
+
+  // Socket connection established; also listens for message emit from server
   useEffect(() => {
-    const { conv_id } = queryString.parse(location.search);
+    // const { conv_id } = queryString.parse(location.search);
     setRoom(conv_id);
     socket = io(ENDPOINT);
     socket.emit("join", { conv_id }, () => {});
@@ -128,6 +137,7 @@ export default function Chat({ location }) {
     };
   }, [ENDPOINT, location.search]);
 
+  // Responsible for emitting each sent message to server through socket
   const sendMessage = (message, event) => {
     event.preventDefault();
 
@@ -136,6 +146,7 @@ export default function Chat({ location }) {
     }
   };
 
+  // Responsible for determining if a user is typing; emits to socket
   let timeout;
   const userTyping = (key) => {
     if (key === "Enter") {
@@ -147,6 +158,7 @@ export default function Chat({ location }) {
     }
   };
 
+  // Receives emits from socket if user is typing
   useEffect(() => {
     socket.on("display", (data) => {
       setTyping(data.data.typing);
@@ -182,6 +194,7 @@ export default function Chat({ location }) {
         <div className={classes.conv}>
           <Conversations conv_id={conv_id} userID={cookie.user.id} />
         </div>
+        {/* Checks if a conversation has been selected, if not, empty Feed is shown and prompts user to browse gigs */}
         {conv_id ? (
           <div className={classes.chat}>
             <Feed

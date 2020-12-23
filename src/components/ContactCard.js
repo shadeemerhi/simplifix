@@ -56,22 +56,30 @@ const useStyles = makeStyles((theme) => ({
 
 export default function ContactCard(props) {
   const classes = useStyles();
+
+  // UserCookie needed to determine conversation/message data for current user
   const { cookie } = useContext(UserCookie);
+
+  // Initializing state
   const [conversationID, setConversationID] = useState(null);
   const [redirect, setRedirect] = useState(false);
 
   const { contractor_id } = props;
 
+  // Responsible for determining if a conversation exists between two users and if not, posting to server
   const findConversation = () => {
     let conversation;
 
     axios.get("/api/conversations").then((response) => {
+      // Checking if the conversation exists between this client and contractor
       conversation = check(cookie.user.id, contractor_id, response.data);
 
+      // If the conversation exists, the application redirects to that conversation room
       if (conversation) {
         setConversationID(conversation.id);
         setRedirect(true);
       } else {
+        // If the conversation does not exist, it is created
         axios
           .put("/api/conversations", {
             client_id: cookie.user.id,
@@ -82,6 +90,7 @@ export default function ContactCard(props) {
             contractor_last: props.last_name,
           })
           .then((response) => {
+            // After conversation has been put into db, the application redirects to new conversation room
             setConversationID(response.data.id);
             setRedirect(true);
           });
@@ -89,6 +98,7 @@ export default function ContactCard(props) {
     });
   };
 
+  // Redirecting to the conversation room
   if (redirect) {
     return <Redirect to={`/chat/?conv_id=${conversationID}`} />;
   }
@@ -140,7 +150,6 @@ export default function ContactCard(props) {
         size="large"
         variant="contained"
         onClick={() => findConversation()}
-        // href={`/chat?contractor_id=${props.contractor_id}&client_id=${cookie.user.id}`}
       >
         Message
       </Button>

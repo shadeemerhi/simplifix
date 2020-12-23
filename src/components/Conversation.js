@@ -44,8 +44,8 @@ const useStyles = makeStyles((props) => ({
 
 export default function Conversation(props) {
   const classes = useStyles(props);
-  console.log('props', props.clicked);
 
+  // Responsible for updating previously unread conversations to 'clicked' (i.e. the conversation has been read)
   const updateClicked = (id, clicked, setClicked) => {
     if(! clicked) {
       axios.patch(`/api/conversations/${id}`).then(response => {
@@ -56,6 +56,7 @@ export default function Conversation(props) {
   }
 
   return(
+    // Checks if the current user is the client or contractor - displays other users name
     props.userID === props.client_id ? (
       <Link to={`/chat/?conv_id=${props.id}`} className={classes.root} onClick={() => {
         updateClicked(props.id, props.clicked, props.setClicked)
