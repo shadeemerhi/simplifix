@@ -1,5 +1,5 @@
 import React from "react";
-import GigItemList from "./gigItemList";
+import GigItemList from "./GigItemList";
 import { Divider } from "@material-ui/core";
 import Fab from "@material-ui/core/Fab";
 import AddIcon from "@material-ui/icons/Add";

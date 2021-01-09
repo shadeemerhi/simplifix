@@ -1,7 +1,7 @@
 import React from "react";
 import { Paper, Box, Grid } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
-import GigDelete from "./gigDelete";
+import GigDelete from "./GigDelete";
 import { useHistory } from "react-router-dom";
 
 const useStyles = makeStyles((theme) => ({
