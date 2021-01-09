@@ -1,8 +1,8 @@
 import React from "react";
-import Categories from "./Categories";
+import Categories from "../Categories/Categories";
 import { makeStyles } from "@material-ui/core/styles";
 import PageHeader from "./PageHeader";
-import TopGigs from "./TopGigs";
+import TopGigs from "../Gigs/TopGigs";
 
 const useStyles = makeStyles((theme) => ({
   root: {

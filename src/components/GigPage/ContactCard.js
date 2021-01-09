@@ -1,12 +1,12 @@
 import React, { useState, useContext } from "react";
 import { Redirect } from "react-router-dom";
-import { UserCookie } from "../hooks/UserCookie";
+import { UserCookie } from "../../hooks/UserCookie";
 import { makeStyles } from "@material-ui/core/styles";
 import LocationOnIcon from "@material-ui/icons/LocationOn";
 import CallIcon from "@material-ui/icons/Call";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
 import Button from "@material-ui/core/Button";
-import { check } from "../helpers/dataHelpers";
+import { check } from "../../helpers/dataHelpers";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({

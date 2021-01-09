@@ -6,11 +6,11 @@ import GigDetails from "./GigDetails";
 import Grid from "@material-ui/core/Grid";
 import GoogleMap from "./GoogleMap";
 import ContactCard from "./ContactCard";
-import Booking from "./Order/Booking";
+import Booking from "../Order/Booking";
 import { makeStyles } from "@material-ui/core/styles";
-import { START } from "../helpers/mode";
-import UseBookingMode from "../hooks/UseBookingMode";
-import PlaceHolder from "./Order/PlaceHolder";
+import { START } from "../../helpers/mode";
+import UseBookingMode from "../../hooks/UseBookingMode";
+import PlaceHolder from "../Order/PlaceHolder";
 
 const useStyles = makeStyles((theme) => ({
   root: {

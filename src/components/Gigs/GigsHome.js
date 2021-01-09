@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import Categories from "./Categories";
-import GigGrid from "./Gigs/GigGrid";
+import Categories from "../Categories/Categories";
+import GigGrid from "./GigGrid";
 import axios from "axios";
 
 export default function GigsHome() {

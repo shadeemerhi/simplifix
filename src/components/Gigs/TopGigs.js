@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Grid from "@material-ui/core/Grid";
 
-import GigCard from "./Gigs/Gig";
+import GigCard from "./Gig";
 import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({

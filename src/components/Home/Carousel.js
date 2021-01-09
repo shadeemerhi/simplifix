@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import ReactCardCarousel from "react-card-carousel";
-import CategoryCard from "./CategoryCard";
+import CategoryCard from "../Categories/CategoryCard";
 import ArrowBackIcon from "@material-ui/icons/ArrowBack";
 import ArrowForwardIcon from "@material-ui/icons/ArrowForward";
 

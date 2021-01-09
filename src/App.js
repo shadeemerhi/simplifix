@@ -1,18 +1,18 @@
 import React from "react";
 import "./App.css";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Other/Navbar";
 import {
   BrowserRouter as Router,
   Route,
   Switch,
   Redirect,
 } from "react-router-dom";
-import SignIn from "./components/SignIn";
-import SignUp from "./components/SignUp";
+import SignIn from "./components/Other/SignIn";
+import SignUp from "./components/Other/SignUp";
 import UserProfile from "./components/UserProfile";
 import MyOrder from "./components/MyOrder";
-import Home from "./components/Home";
-import Gigs from "./components/Gigs";
+import Home from "./components/Home/Home";
+import Gigs from "./components/Gigs/Gigs";
 import Chat from "./components/Messaging/Chat";
 import { UserCookie } from "./hooks/UserCookie";
 import useAppData from "./hooks/useAppData";
@@ -21,11 +21,11 @@ import {
   getAllOrdersbyContractorId,
   getAllOrdersbyClientId,
 } from "./helpers/dataHelpers";
-import SearchResults from "./components/SearchResults";
-import IndexBottom from "./components/IndexBottom";
+import SearchResults from "./components/Other/SearchResults";
+import IndexBottom from "./components/Other/IndexBottom";
 import SuccessPage from "./components/Stripe/SuccessPage";
 import FailedPage from "./components/Stripe/FailedPage";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "./components/Messaging/ScrollToTop";
 
 import { makeStyles } from "@material-ui/core/styles";
 

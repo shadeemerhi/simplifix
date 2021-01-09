@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Route, useParams, Switch } from "react-router-dom";
-import GigPage from "./GigPage";
-import GigGrid from "./Gigs/GigGrid";
+import GigPage from "../GigPage/GigPage";
+import GigGrid from "../Gigs/GigGrid";
 import axios from "axios";
 
 export default function CategoryPage() {

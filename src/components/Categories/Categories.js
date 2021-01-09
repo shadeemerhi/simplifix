@@ -1,9 +1,9 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import { useApplicationData } from "../hooks/useApplicationData";
+import { useApplicationData } from "../../hooks/useApplicationData";
 import Grid from "@material-ui/core/Grid";
-import PopularHeading from "./PopularHeading";
-import Carousel from "./Carousel";
+import PopularHeading from "../Home/PopularHeading";
+import Carousel from "../Home/Carousel";
 
 const useStyles = makeStyles((theme) => ({
   root: {
