@@ -1,7 +1,7 @@
 import React, { useEffect, useContext, useState } from "react";
 import { Link } from "react-router-dom";
 import queryString from "query-string";
-import { UserCookie } from "../hooks/UserCookie";
+import { UserCookie } from "../../hooks/UserCookie";
 import io from "socket.io-client";
 import Feed from "./Feed";
 import Input from "./Input";

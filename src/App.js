@@ -13,7 +13,7 @@ import UserProfile from "./components/user_profile";
 import MyOrder from "./components/MyOrder";
 import Home from "./components/Home";
 import Gigs from "./components/Gigs";
-import Chat from "./components/Chat";
+import Chat from "./components/Messaging/Chat";
 import { UserCookie } from "./hooks/UserCookie";
 import useAppData from "./hooks/useAppData";
 import {
